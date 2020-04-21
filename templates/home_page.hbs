@@ -12,9 +12,69 @@
 </section>
 
 <div class="container">
-  <section class="section knowledge-base">
-    <h2 class="visibility-hidden">{{ t 'categories' }}</h2>
+  <section class="section knowledge-base article-container">
+    <aside class="article-sidebar" aria-labelledby="section-articles-title">
+        <div class="collapsible-sidebar">
+          <div id="sidebar-navigation">
+            <ul>
+              {{#each categories}}
+              <li class="left-nav-article-category">
+                <a href='{{url}}'>
+                  {{#is id 360000077631}}
+                  <!-- Contacts -->
+                  <i class="fas fa-user"></i>
+                  {{/is}}
+                  {{#is id 360000074252}}
+                  <!-- Products -->
+									<i class="fas fa-tags"></i>
+									{{/is}}
+                  {{#is id 360000191611}}
+                  <!-- Sales -->
+									<i class="fas fa-receipt"></i>
+									{{/is}}
+                  {{#is id 360000074292}}
+                  <!-- Purchase -->
+									<i class="fas fa-ship"></i>
+									{{/is}}
+                  {{#is id 360000074232}}
+                  <!-- Shipping -->
+									<i class="fas fa-shipping-fast"></i>
+									{{/is}}
+                  {{#is id 360000077671}}
+                  <!-- Inventory -->
+									<i class="fas fa-pallet"></i>
+									{{/is}}
+                  {{#is id 360000074332}}
+                  <!-- Manufacturing -->
+									<i class="fas fa-industry"></i>
+									{{/is}}
+                  {{#is id 360000074312}}
+                  <!-- Financials -->
+									<i class="fas fa-dollar-sign"></i>
+									{{/is}}
+                  {{#is id 360000191591}}
+                  <!-- Settings -->
+									<i class="fas fa-cog"></i>
+									{{/is}}
+                  {{#is id 360000077711}}
+                  <!-- Developers -->
+									<i class="fas fa-code"></i>
+									{{/is}}
+                  {{#is id 360000546952}}
+                  <!-- Release Notes -->
+									<i class="fas fa-scroll"></i>
+									{{/is}}
+                  {{ name }}
+                </a>
+              </li>
+              {{/each}}
+            </ul>
+          </div>
+        </div>
+    </aside>
+    
     <section class="categories blocks">
+      <h2>Documentation</h2>
       <ul class="blocks-list">
         {{#each categories}}
           {{#if ../has_multiple_categories}}
