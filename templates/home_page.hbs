@@ -19,7 +19,8 @@
             <ul>
               {{#each categories}}
               <li class="left-nav-article-category">
-                <a href='{{url}}'>
+                
+                  <span class="category-icon">
                   {{#is id 360000077631}}
                   <!-- Contacts -->
                   <i class="fas fa-user"></i>
@@ -64,6 +65,8 @@
                   <!-- Release Notes -->
 									<i class="fas fa-scroll"></i>
 									{{/is}}
+                  </span>
+                <a href='{{url}}'>
                   {{ name }}
                 </a>
               </li>

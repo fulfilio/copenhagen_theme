@@ -4805,6 +4805,11 @@ a.back {
     font-size: 18px;
     margin-bottom: 5px;
     margin-top: 5px;
+  	display: flex;
+}
+.category-icon {
+  	min-width: 30px;
+  	color: #616161;
 }
 .left-nav-article-category a {
     font-weight: 500;
@@ -4812,6 +4817,9 @@ a.back {
     color: #2e2e2e;
     height: 36px;
   	line-height: 36px;
+}
+.left-nav-article-category a:hover {
+  	text-decoration: none;
 }
 .left-nav-article-section {
     font-weight: 600;
