@@ -314,7 +314,7 @@ $(document).ready(function() {
         function(articles) { 
 					$('#sidebar-navigation').html(template({
   					sections: sections.sections,
-  					articles: articles.articles,
+  					articles: _.filter(articles.articles, function(article){return !article.draft}),
             currentArticleId: {{ article.id }}
   				}))
         }
