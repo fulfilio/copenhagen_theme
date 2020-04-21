@@ -1,17 +1,22 @@
 <div class="container-divider"></div>
 <div class="container">
-  <nav class="sub-nav">
-    {{breadcrumbs}}
-    <div class="search-container">
-      <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" focusable="false" viewBox="0 0 12 12" class="search-icon">
-        <circle cx="4.5" cy="4.5" r="4" fill="none" stroke="currentColor"/>
-        <path stroke="currentColor" stroke-linecap="round" d="M11 11L7.5 7.5"/>
-      </svg>
-      {{search submit=false}}
-    </div>
-  </nav>
-
+  
   <div class="category-container">
+    
+    <aside class="article-sidebar" aria-labelledby="section-articles-title">
+        <div class="collapsible-sidebar">
+          <a href="/hc/en-us" class="back">
+            <i class="fas fa-arrow-left"></i>
+            Home
+          </a>
+          <div id="left-nav-article-category">
+
+          </div>
+          <div id="sidebar-navigation">
+          </div>
+        </div>
+    </aside>
+    
     <div class="category-content">
       <header class="page-header">
         <h1>{{category.name}}</h1>
@@ -61,3 +66,48 @@
     </div>
   </div>
 </div>
+
+
+<script type="text/template" id="leftNavTemplate">
+	<ul>
+		<% _.forEach(sections, function(section) { %>
+      <li class="left-nav-article-section">
+        <%- section.name %>
+    	</li> 
+      <% _.forEach(articles, function(article) { %>
+        <% if (article.section_id == section.id) { %>
+        <li class="left-nav-article">
+          <a href="<%- article.html_url %>">
+            <%- article.name %>
+          </a>
+        </li>
+        <% } %>
+      <% }); %> 
+      
+		<% }); %> 
+	</ul>
+</script>
+          
+<script>  
+$(document).ready(function() {
+  var catId = {{ category.id }};
+  var templateStr = $('#leftNavTemplate').html();
+  var template = _.template(templateStr);
+  $.getJSON(
+  	'/api/v2/help_center/en-us/categories/'+catId+'/sections.json',
+  	function(sections) { 
+      $.getJSON(
+        '/api/v2/help_center/en-us/categories/'+catId+'/articles.json?per_page=100',
+        function(articles) { 
+					$('#sidebar-navigation').html(template({
+  					sections: sections.sections,
+  					articles: articles.articles
+  				}))
+        }
+      );
+		}
+  );
+  $("#left-nav-article-category").html("{{ category.name }}");
+  
+});
+</script>
