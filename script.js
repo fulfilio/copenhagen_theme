@@ -397,4 +397,18 @@ document.addEventListener('DOMContentLoaded', function() {
       }
     });
   });
+
+
+  /* Status Page: Sharoon */
+  var sp = new StatusPage.page({ page: '0vmnn5x9jffh'});
+
+  sp.summary({
+    success: function(data) {
+      // adds the text description to the dropdown
+      $('.status-color-description').text(data.status.description);
+      // appends the status indicator as a class name so we can use the right color for the status light thing
+      $('.status-color-dot').addClass(data.status.indicator);
+    }
+  });
+  
 });
