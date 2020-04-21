@@ -322,7 +322,26 @@ $(document).ready(function() {
 		}
   );
   var categoryName = $(".breadcrumbs li")[1].title;
-  $("#left-nav-article-category").html(categoryName);
+  var icons = {
+    '360000188472': 'fa-play-circle',
+    '360000077631': 'fa-user',
+    '360000074252': 'fa-tags',
+    '360000191611': 'fa-receipt',
+    '360000074292': 'fa-ship',
+    '360000074232': 'fa-shipping-fast',
+    '360000077671': 'fa-pallet',
+    '360000074332': 'fa-industry',
+    '360000074312': 'fa-dollar-sign',
+    '360000191591': 'fa-cog',
+    '360000077711': 'fa-code',
+    '360000546952': 'fa-scroll'
+  };
+  var icon = icons[catId] || '';
+  $("#left-nav-article-category").html(
+    '<span class="category-icon">'
+      + '<i class="fas ' + icon + '"></i></span>'
+      + categoryName
+    );
   
   tocbot.init({
     // Where to render the table of contents.

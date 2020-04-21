@@ -10,7 +10,57 @@
             Home
           </a>
           <div id="left-nav-article-category">
-
+                  <span class="category-icon">
+                  {{#is category.id 360000188472}}
+                  <!-- Getting Started -->
+                  <i class="fas fa-play-circle"></i>
+                  {{/is}}
+                  {{#is category.id 360000077631}}
+                  <!-- Contacts -->
+                  <i class="fas fa-user"></i>
+                  {{/is}}
+                  {{#is category.id 360000074252}}
+                  <!-- Products -->
+									<i class="fas fa-tags"></i>
+									{{/is}}
+                  {{#is category.id 360000191611}}
+                  <!-- Sales -->
+									<i class="fas fa-receipt"></i>
+									{{/is}}
+                  {{#is category.id 360000074292}}
+                  <!-- Purchase -->
+									<i class="fas fa-ship"></i>
+									{{/is}}
+                  {{#is category.id 360000074232}}
+                  <!-- Shipping -->
+									<i class="fas fa-shipping-fast"></i>
+									{{/is}}
+                  {{#is category.id 360000077671}}
+                  <!-- Inventory -->
+									<i class="fas fa-pallet"></i>
+									{{/is}}
+                  {{#is category.id 360000074332}}
+                  <!-- Manufacturing -->
+									<i class="fas fa-industry"></i>
+									{{/is}}
+                  {{#is category.id 360000074312}}
+                  <!-- Financials -->
+									<i class="fas fa-dollar-sign"></i>
+									{{/is}}
+                  {{#is category.id 360000191591}}
+                  <!-- Settings -->
+									<i class="fas fa-cog"></i>
+									{{/is}}
+                  {{#is category.id 360000077711}}
+                  <!-- Developers -->
+									<i class="fas fa-code"></i>
+									{{/is}}
+                  {{#is category.id 360000546952}}
+                  <!-- Release Notes -->
+									<i class="fas fa-scroll"></i>
+									{{/is}}
+                  </span>
+                  {{ category.name }}
           </div>
           <div id="sidebar-navigation">
           </div>
@@ -107,7 +157,7 @@ $(document).ready(function() {
       );
 		}
   );
-  $("#left-nav-article-category").html("{{ category.name }}");
+
   
 });
 </script>
