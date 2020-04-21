@@ -23,20 +23,14 @@
               <path stroke="currentColor" stroke-linecap="round" d="M3 9l6-6m0 6L3 3"/>
             </svg>
           </button>
-          <span id="section-articles-title" class="collapsible-sidebar-title sidenav-title">
-            {{t 'articles_in_section'}}
-          </span>
-          <div class="collapsible-sidebar-body">
-            <ul>
-              {{#each section.articles}}
-                <li>
-                  <a href="{{url}}" class="sidenav-item {{#is id ../article.id}}current-article{{/is}}">{{title}}</a>
-                </li>
-              {{/each}}
-            </ul>
-            {{#if section.more_articles}}
-              <a href="{{section.url}}" class="article-sidebar-item">{{t 'see_more'}}</a>
-            {{/if}}
+          <a href="/hc/en-us" class="back">
+            <i class="fas fa-arrow-left"></i>
+            Home
+          </a>
+          <div id="left-nav-article-category">
+            
+          </div>
+          <div id="sidebar-navigation">
           </div>
         </div>
       {{/if}}
@@ -278,5 +272,62 @@
         </div>
       {{/if}}
     </article>
+    
+    <aside id="toc-sidebar">
+      <h6>in this article</h6>
+      <div id="toc"></div>
+    </aside>
   </div>
 </div>
+
+<script type="text/template" id="leftNavTemplate">
+	<ul>
+		<% _.forEach(sections, function(section) { %>
+      <li class="left-nav-article-section">
+        <%- section.name %>
+    	</li> 
+      <% _.forEach(articles, function(article) { %>
+        <% if (article.section_id == section.id) { %>
+        <li class="left-nav-article">
+          <a href="<%- article.html_url %>" <% if (article.id == currentArticleId) { %>class="current"<% } %>>
+            <%- article.name %>
+          </a>
+        </li>
+        <% } %>
+      <% }); %> 
+      
+		<% }); %> 
+	</ul>
+</script>
+
+<script>  
+$(document).ready(function() {
+  var catId = $(".breadcrumbs li:nth-child(2) a").attr("href").match(/[0-9]+/);
+  var templateStr = $('#leftNavTemplate').html();
+  var template = _.template(templateStr);
+  $.getJSON(
+  	'/api/v2/help_center/en-us/categories/'+catId+'/sections.json',
+  	function(sections) { 
+      $.getJSON(
+        '/api/v2/help_center/en-us/categories/'+catId+'/articles.json?per_page=100',
+        function(articles) { 
+					$('#sidebar-navigation').html(template({
+  					sections: sections.sections,
+  					articles: articles.articles,
+            currentArticleId: {{ article.id }}
+  				}))
+        }
+      );
+		}
+  );
+  var categoryName = $(".breadcrumbs li")[1].title;
+  $("#left-nav-article-category").html(categoryName);
+  
+  tocbot.init({
+    // Where to render the table of contents.
+    tocSelector: '#toc',
+    // Where to grab the headings to build the table of contents.
+    contentSelector: '.article-body'
+	});
+});
+</script>
