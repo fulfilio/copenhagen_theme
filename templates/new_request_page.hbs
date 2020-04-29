@@ -1,5 +1,6 @@
 <div class="container-divider"></div>
 <div class="container">
+
   <nav class="sub-nav">
     {{breadcrumbs}}
     <div class="search-container">
@@ -11,14 +12,13 @@
     </div>
   </nav>
 
-	<div class="callout-blue">
+  <div class="callout-blue">
     <h5>Current Status</h5>
     <a href="http://status.fulfil.io/" target="_blank">
       <span class="status-color-dot"></span>
       <span class="status-color-description"></span>
     </a>
-	</div>
-  
+  </div>
   <h1>
     {{t 'submit_a_request'}}
     <span class="follow-up-hint">
@@ -30,11 +30,26 @@
     <strong>Severity 1 Issues!</strong> <br/>
     Submitting this issue will page the on-call site reliability engineer (SRE).<br/>
     Please use this severity level only when your fulfil system is unavailable for all users.<br/> 
-		<br/>
+    <br/>
     For faster response time on a product support issue, select a different severity level instead.
   </div>
-  
+  <div id="ticket-form"></div>
+  <script>
+    $(document).ready(function() {
+      var organization = "your organization";
+      if (HelpCenter.user.organizations.length > 0) {
+        organization = HelpCenter.user.organizations[0].name;
+      }
+      var typeFormURL =  "https://fulfil-io.typeform.com/to/Z4GAfT?name=" + HelpCenter.user.name + "&email=" + HelpCenter.user.email + "&merchant=" + organization;
+      $("#ticket-form").html('<div class="typeform-widget" data-url="' + typeFormURL + '" data-transparency="50" data-hide-headers=true data-hide-footer=true style="width: 100%; height: 500px;" id="typeform"></div>');
+      (function() { var qs,js,q,s,d=document, gi=d.getElementById, ce=d.createElement, gt=d.getElementsByTagName, id="typef_orm", b="https://embed.typeform.com/"; if(!gi.call(d,id)) { js=ce.call(d,"script"); js.id=id; js.src=b+"embed.js"; q=gt.call(d,"script")[0]; q.parentNode.insertBefore(js,q) } })();
+    })
+  </script>
+
+  <!--div style="font-family: Sans-Serif;font-size: 12px;color: #999;opacity: 0.5; padding-top: 5px;"> powered by <a href="https://admin.typeform.com/signup?utm_campaign=Z4GAfT&utm_source=typeform.com-01D8JX52MR6R2SHYRQ947BJHFH-professional&utm_medium=typeform&utm_content=typeform-embedded-poweredbytypeform&utm_term=EN" style="color: #999" target="_blank">Typeform</a> </div-->
+
   <div id="main-content" class="form">
-    {{request_form}}
+    {{!--request_form--}}
+
   </div>
 </div>
