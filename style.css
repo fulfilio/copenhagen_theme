@@ -4928,6 +4928,10 @@ a.toc-link{height:100%;color: #616161;white-space: nowrap}
     border-radius: 4px;
     padding: 13px;
 }
+.section-tree-title {
+    font-size: 16px;
+    font-weight: 500;
+}
 .footer {
   background-color: #EDF1F7;
   margin-top: 0px;
