@@ -4932,3 +4932,6 @@ a.toc-link{height:100%;color: #616161;white-space: nowrap}
   background-color: #EDF1F7;
   margin-top: 0px;
 }
+.page-header-description {
+  font-style: normal;
+}
