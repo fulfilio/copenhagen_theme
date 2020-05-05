@@ -4814,9 +4814,12 @@ a.back {
   	display: flex;
 }
 .category-icon {
-  	min-width: 30px;
-  	color: #68737d;
-  	padding: 5px;
+    min-width: 30px;
+    color: #8F9BB3;
+    padding: 5px;
+    width: 30px;
+    margin-right: 5px;
+    text-align: center;
 }
 .left-nav-article-category a {
     font-weight: 500;
