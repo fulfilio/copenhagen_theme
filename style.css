@@ -4900,6 +4900,21 @@ a.toc-link{height:100%;color: #616161;white-space: nowrap}
 .is-active-link::before{background-color:#3C87F9}
 
 .blocks-item {
-    border: 1px solid #68737d;
-    border-radius: 2px;
+    border: 1px solid #ffffff;
+    background: #FFFFFF;
+    box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.12);
+    border-radius: 4px;
+}
+.blocks-item-title {
+    margin-bottom: 0;
+    font-size: 20px;
+    line-height: 26px;
+    color: #192038;
+}
+
+.blocks-item-description {
+    font-size: 14px;
+    font-weight: normal;
+    line-height: 18px;
+    color: #8F9BB3;
 }
