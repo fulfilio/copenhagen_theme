@@ -4805,7 +4805,7 @@ html[dir="rtl"] .notification-left-aligned {
 
 /* Left Navigation */
 a.back {
-  color: #616161;
+    color: #8F9BB3;
 }
 .left-nav-article-category {
     font-size: 18px;
@@ -4941,4 +4941,20 @@ a.toc-link{height:100%;color: #616161;white-space: nowrap}
 }
 .page-header-description {
   font-style: normal;
+}
+button.button {
+    background: #FFFFFF;
+    border: 1px solid #C5CEE0;
+    box-sizing: border-box;
+    box-shadow: 0px 2px 8px rgba(16, 20, 38, 0.12);
+    border-radius: 4px;
+    color: #2E3A59;
+    font-size: 14px;
+    line-height: 26px;
+}
+.button:hover {
+    background-color: #ffffff;
+    color: #2E3A59;
+    text-decoration: none;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.25);
 }
