@@ -4951,6 +4951,7 @@ button.button {
     color: #2E3A59;
     font-size: 14px;
     line-height: 26px;
+    transition: background-color 240ms, box-shadow 240ms;
 }
 .button:hover {
     background-color: #ffffff;
